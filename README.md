@@ -2,6 +2,9 @@
 
 
 ## Description
+
+[![Build Status](https://travis-ci.com/lotusnoir/apps_wikijs.svg?branch=master)](https://travis-ci.com/lotusnoir/apps_wikijs)[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)[![Ansible Role](https://img.shields.io/badge/ansible%20role-apps__wikijs-blue)](https://galaxy.ansible.com/lotusnoir/apps_wikijs/)[![GitHub tag](https://img.shields.io/badge/version-latest-blue)](https://github.com/lotusnoir/apps_wikijs/tags)
+
 Deploy wikijs wiki system using ansible.
 
 ## Upgradability notice

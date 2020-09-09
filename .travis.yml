@@ -5,6 +5,39 @@ python:
   - "2.7"
   - "3.6"
 
+addons:
+  ssh_known_hosts:
+  - localhost
+
+env:
+  - distribution: centos
+    version: 8
+  - distribution: centos
+    version: 7
+  - distribution: fedora
+    version: 29
+  - distribution: fedora
+    version: 28
+  - distribution: fedora
+    version: 27
+  - distribution: fedora
+    version: 26
+  - distribution: fedora
+    version: 25
+  - distribution: fedora
+    version: 24
+  - distribution: ubuntu
+    version: bionic
+  - distribution: ubuntu
+    version: xenial
+  - distribution: ubuntu
+    version: trusty
+  - distribution: debian
+    version: buster
+  - distribution: debian
+    version: stretch
+  - distribution: debian
+    version: jessie
 before_install:
   # Make sure everything's up to date.
   - sudo apt-get update -qq
@@ -12,8 +45,7 @@ before_install:
 install:
   # Install Ansible.
   - pip install ansible
-  - ansible-galaxy install geerlingguy.git
-  - ansible-galaxy install geerlingguy.nodejs
+  - ansible-galaxy install -r requirements.txt
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../:/home/travis/.ansible/roles/'; } >> ansible.cfg"
@@ -32,34 +64,4 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-addons:
-  ssh_known_hosts:
-  - localhost
 
-env:
-#  - distribution: centos
-#    version: 7
-#  - distribution: fedora
-#    version: 29
-#  - distribution: fedora
-#    version: 28
-#  - distribution: fedora
-#    version: 27
-#  - distribution: fedora
-#    version: 26
-#  - distribution: fedora
-#    version: 25
-#  - distribution: fedora
-#    version: 24
-#  - distribution: ubuntu
-#    version: bionic
-#  - distribution: ubuntu
-#    version: xenial
-#  - distribution: ubuntu
-#    version: trusty
-  - distribution: debian
-    version: buster
-#  - distribution: debian
-#    version: stretch
-#  - distribution: debian
-#    version: jessie
