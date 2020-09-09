@@ -55,7 +55,7 @@ In the meta dependencies we use:
 ## Examples
 
 	---
-	- hosts: apps_wikijs:&{{ hosts| default('apps_wikijs') }}
+	- hosts: apps_wikijs
 	  become: yes
 	  become_method: sudo
 	  gather_facts: yes
@@ -67,7 +67,7 @@ In the meta dependencies we use:
   	    wikijs_config_db_host: 10.64.37.200
 	    wikijs_config_db_port: 5432
 	    wikijs_config_db_user: wikijs
-	    wikijs_config_db_pass: "{{ pgsql_sys_usr_wikijs }}"
+	    wikijs_config_db_pass: "strongpassword"
 	    wikijs_config_db_db: wikijs
 	  environment: 
 	    http_proxy: "{{ http_proxy }}"

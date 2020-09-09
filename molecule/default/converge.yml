@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  tasks:
+    - name: "Include apps_wikijs"
+      include_role:
+        name: "apps_wikijs"
