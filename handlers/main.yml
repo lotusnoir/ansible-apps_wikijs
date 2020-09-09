@@ -1,0 +1,12 @@
+---
+- name: Start wikijs
+  service:
+    name: wikijs
+    state: started
+    enabled: true
+    daemon_reload: true
+
+- name: "Restart wikijs"
+  service:
+    name: wikijs
+    state: restarted

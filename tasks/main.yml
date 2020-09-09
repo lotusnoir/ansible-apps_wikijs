@@ -1,0 +1,76 @@
+---
+- name: "Check if Wiki.js is already installed"
+  stat:
+    path: "{{ wikijs_install_dir }}"
+  register: wikijs_installed
+
+- name: "Check installed version of Wiki.js"
+  shell: "cat {{ wikijs_install_dir }}/package.json | jq -r '.version'"
+  register: wikijs_version_installed
+  changed_when: false
+
+- when: not wikijs_installed.stat.exists or wikijs_version != wikijs_version_installed.stdout_lines[0] 
+  block:
+    - name: "Create wikijs system group"
+      group:
+        name: wikijs
+        system: true
+        state: present
+    
+    - name: "Create wikijs system user"
+      user:
+        name: wikijs
+        system: true
+        shell: "/usr/sbin/nologin"
+        group: wikijs
+        createhome: false
+        home: "{{ wikijs_install_dir }}"
+
+    - name: "Create install directory {{ wikijs_install_dir }}"
+      file:
+        path: "{{ wikijs_install_dir }}"
+        state: directory
+        owner: wikijs
+        group: wikijs
+    
+    - name: "Download and extract wikijs"
+      unarchive:
+        src: "{{ wikijs_download_url }}"
+        dest: "{{ wikijs_install_dir }}/"
+        remote_src: true
+        owner: wikijs
+        group: wikijs
+    
+    - name: "Install sideload locales from git"
+      git:
+        repo: "https://github.com/Requarks/wiki-localization.git"
+        dest: "{{ wikijs_install_dir }}/data/sideload"
+        depth: 1 # Shallow clone
+        recursive: yes
+        force: yes
+      notify: Restart wikijs
+
+    - name: "Change ownership of sideload"
+      file:
+        path: "{{ wikijs_install_dir }}/data/sideload"
+        owner: wikijs
+        group: wikijs
+
+- name: "Deploy config.yml"
+  template:
+    src: config.yml.j2
+    dest: "{{ wikijs_install_dir }}/config.yml"
+    owner: wikijs
+    group: wikijs
+    mode: 0640
+  notify: Restart wikijs
+
+- name: "Copy service file"
+  template:
+    src: wikijs.service.j2
+    dest: "/etc/systemd/system/wikijs.service"
+    owner: root
+    group: root
+    mode: 0640
+  notify:
+    - Start wikijs

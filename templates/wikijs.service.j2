@@ -1,0 +1,25 @@
+[Unit]
+Description=Wiki.js Service
+After=network.target
+
+[Service]
+Type=simple
+Environment=NODE_ENV=production
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/node server
+Restart=always
+User=wikijs
+Group=wikijs
+WorkingDirectory={{ wikijs_install_dir }}
+
+LimitNOFILE=65000
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+RemoveIPC=true
+
+SyslogIdentifier=wikijs
+
+[Install]
+WantedBy=multi-user.target

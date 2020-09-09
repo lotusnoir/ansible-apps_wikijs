@@ -1,0 +1,2 @@
+---
+wikijs_download_url: "https://github.com/Requarks/wiki/releases/download/{{ wikijs_version }}/wiki-js.tar.gz"

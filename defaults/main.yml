@@ -1,0 +1,37 @@
+---
+#Install
+wikijs_version: "2.5.126"
+wikijs_install_dir: /opt/wikijs
+
+#Config
+wikijs_config_bindIP: "0.0.0.0"
+wikijs_config_port: 3000
+wikijs_config_logLevel: info
+wikijs_config_offline: true
+wikijs_config_ha: false
+wikijs_config_dataPath: ./data
+
+#Database
+wikijs_config_db_type: postgres
+wikijs_config_db_host: localhost
+wikijs_config_db_port: 5432
+wikijs_config_db_user: wikijs
+wikijs_config_db_pass: strongpassword
+wikijs_config_db_db: wiki
+wikijs_config_db_ssl: false
+wikijs_config_db_ssl_auto: true
+wikijs_config_sqlite_storage: path/to/database.sqlite
+
+#SSL
+wikijs_config_ssl_enabled: false
+wikijs_config_ssl_port: 3443
+wikijs_config_ssl_provider: custom
+wikijs_config_ssl_format: pem
+wikijs_config_ssl_key: path/to/key.pem
+wikijs_config_ssl_cert: path/to/cert.pem
+wikijs_config_ssl_pfx: path/to/cert.pfx
+wikijs_config_ssl_passphrase: null
+wikijs_config_ssl_dhparam: null
+wikijs_config_ssl_domain: wiki.yourdomain.com
+wikijs_config_ssl_subscriberEmail: admin@example.com
+
