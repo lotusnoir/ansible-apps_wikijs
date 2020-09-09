@@ -1,7 +1,9 @@
 ---
 sudo: required
 language: python
-python: "2.7"
+python:
+  - "2.7"
+  - "3.6"
 
 before_install:
   # Make sure everything's up to date.
@@ -14,7 +16,7 @@ install:
   - ansible-galaxy install geerlingguy.nodejs
 
   # Add ansible.cfg to pick up roles path.
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+  - "{ echo '[defaults]'; echo 'roles_path = ../:/home/travis/.ansible/roles/'; } >> ansible.cfg"
 
 script:
   # Check the role/playbook's syntax.
