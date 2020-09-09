@@ -34,4 +34,3 @@ wikijs_config_ssl_passphrase: null
 wikijs_config_ssl_dhparam: null
 wikijs_config_ssl_domain: wiki.yourdomain.com
 wikijs_config_ssl_subscriberEmail: admin@example.com
-
