@@ -24,8 +24,8 @@ env:
     version: 26
   - distribution: fedora
     version: 25
-  - distribution: fedora
-    version: 24
+  - distribution: ubuntu
+    version: focal
   - distribution: ubuntu
     version: bionic
   - distribution: ubuntu
@@ -45,7 +45,7 @@ before_install:
 install:
   # Install Ansible.
   - pip install ansible
-  - ansible-galaxy install -r requirements.txt
+  - ansible-galaxy install -r requirements.yml
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../:/home/travis/.ansible/roles/'; } >> ansible.cfg"
