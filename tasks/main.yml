@@ -1,22 +1,28 @@
 ---
-- name: "Check if Wiki.js is already installed"
+- name: "Check if wikijs is already installed"
   stat:
     path: "{{ wikijs_install_dir }}"
   register: wikijs_installed
 
-- name: "Check installed version of Wiki.js"
-  shell: "cat {{ wikijs_install_dir }}/package.json | jq -r '.version'"
+- name: "Check installed version of wikijs"
+  shell: |
+    set -o pipefail
+    cat {{ wikijs_install_dir }}/package.json | jq -r '.version'
+  args:
+    executable: /bin/bash
   register: wikijs_version_installed
   changed_when: false
+  when:
+    - wikijs_installed.stat.exists
 
-- when: not wikijs_installed.stat.exists or wikijs_version != wikijs_version_installed.stdout_lines[0] 
+- when: not wikijs_installed.stat.exists or wikijs_version != wikijs_version_installed.stdout_lines[0]
   block:
     - name: "Create wikijs system group"
       group:
         name: wikijs
         system: true
         state: present
-    
+
     - name: "Create wikijs system user"
       user:
         name: wikijs
@@ -30,17 +36,19 @@
       file:
         path: "{{ wikijs_install_dir }}"
         state: directory
+        mode: 0755
         owner: wikijs
         group: wikijs
-    
+
     - name: "Download and extract wikijs"
       unarchive:
         src: "{{ wikijs_download_url }}"
         dest: "{{ wikijs_install_dir }}/"
         remote_src: true
+        mode: 0644
         owner: wikijs
         group: wikijs
-    
+
     - name: "Install sideload locales from git"
       git:
         repo: "https://github.com/Requarks/wiki-localization.git"
