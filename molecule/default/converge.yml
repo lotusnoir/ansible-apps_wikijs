@@ -6,3 +6,5 @@
     - name: "Include apps_wikijs"
       include_role:
         name: "apps_wikijs"
+  vars:
+    nodejs_install_npm_user: root
