@@ -20,7 +20,7 @@ before_install:
 
 install:
   # Install test dependencies.
-  - pip install molecule yamllint ansible-lint docker
+  - pip install molecule yamllint ansible-lint docker molecule-goss
 
 before_script:
   - ansible-galaxy install -r requirements.yml
