@@ -1,13 +1,15 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: requirements.yml
 
 driver:
   name: docker
 
 lint: |
   yamllint .
-  ansible-lint
+  #ansible-lint
 
 platforms:
   - name: test-01.prod.example.com
@@ -22,13 +24,15 @@ provisioner:
   name: ansible
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+  lint: |
+    ansible-lint
 
 scenario:
   name: default
   test_sequence:
-    - lint
     - destroy
-#    - dependency
+    - dependency
+    - lint
     - syntax
     - create
     - converge
