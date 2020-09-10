@@ -8,9 +8,11 @@ env:
     - ROLE_NAME: apps_wikijs
   matrix:
 #    - MOLECULE_DISTRO: centos8
-#    - MOLECULE_DISTRO: ubuntu2004
-#    - MOLECULE_DISTRO: ubuntu1804
+    - MOLECULE_DISTRO: ubuntu2004
+    - MOLECULE_DISTRO: ubuntu1804
     - MOLECULE_DISTRO: debian10
+    - MOLECULE_DISTRO: debian9
+    - MOLECULE_DISTRO: debian8
 
 before_install:
   # Upgrade Docker to work with docker-py.
