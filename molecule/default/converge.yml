@@ -10,7 +10,7 @@
       changed_when: false
 
   roles:
-    - role: ansible-apps_wikijs
+    - role: apps_wikijs
 
   vars:
     nodejs_install_npm_user: root
