@@ -9,11 +9,10 @@ driver:
 
 lint: |
   yamllint .
-  #ansible-lint
 
 platforms:
-  - name: test-01.prod.example.com
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
+  - name: test-01.dvlp.example.com
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro

@@ -1,11 +1,11 @@
-# Ansible Role: wikijs
+# Ansible Role: ansible-apps_wikijs
 
 
 ## Description
 
-[![Build Status](https://travis-ci.com/lotusnoir/apps_wikijs.svg?branch=master)](https://travis-ci.com/lotusnoir/apps_wikijs)[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)[![Ansible Role](https://img.shields.io/badge/ansible%20role-apps__wikijs-blue)](https://galaxy.ansible.com/lotusnoir/apps_wikijs/)[![GitHub tag](https://img.shields.io/badge/version-latest-blue)](https://github.com/lotusnoir/apps_wikijs/tags)
+[![Build Status](https://travis-ci.com/lotusnoir/ansible-apps_wikijs.svg?branch=master)](https://travis-ci.com/lotusnoir/ansible-apps_wikijs)[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)[![Ansible Role](https://img.shields.io/badge/ansible%20role-apps__wikijs-blue)](https://galaxy.ansible.com/lotusnoir/ansible-apps_wikijs/)[![GitHub tag](https://img.shields.io/badge/version-latest-blue)](https://github.com/lotusnoir/ansible-apps_wikijs/tags)
 
-Deploy wikijs wiki system using ansible.
+Deploy [Wiki.js](https://wiki.js.org/) wiki system using ansible.
 
 ## Upgradability notice
 
@@ -60,7 +60,7 @@ In the meta dependencies we use:
 	  become_method: sudo
 	  gather_facts: yes
 	  roles:
-	    - role: apps_wikijs
+	    - role: ansible-apps_wikijs
 	  vars:
 	    wikijs_version: "2.5.126"
 	    wikijs_install_dir: /opt/wikijs
