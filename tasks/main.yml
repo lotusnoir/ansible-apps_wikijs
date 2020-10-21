@@ -48,6 +48,7 @@
         mode: 0644
         owner: wikijs
         group: wikijs
+      notify: Restart wikijs
 
     - name: "Install sideload locales from git"
       git:

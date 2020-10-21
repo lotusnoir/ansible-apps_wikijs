@@ -20,6 +20,6 @@ galaxy_info:
     - documentation
     - wikijs
 
-dependencies:
-  - { role: geerlingguy.git }
-  - { role: geerlingguy.nodejs }
+dependencies: []
+#  - { role: geerlingguy.git }
+#  - { role: geerlingguy.nodejs }
