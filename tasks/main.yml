@@ -54,7 +54,7 @@
       git:
         repo: "https://github.com/Requarks/wiki-localization.git"
         dest: "{{ wikijs_install_dir }}/data/sideload"
-        depth: 1 # Shallow clone
+        depth: 1    # Shallow clone
         recursive: yes
         force: yes
       notify: Restart wikijs
