@@ -3,7 +3,17 @@
 
 ## Description
 
-[![Build Status](https://travis-ci.com/lotusnoir/ansible-apps_wikijs.svg?branch=master)](https://travis-ci.com/lotusnoir/ansible-apps_wikijs)[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)[![Ansible Role](https://img.shields.io/badge/ansible%20role-apps__wikijs-blue)](https://galaxy.ansible.com/lotusnoir/ansible-apps_wikijs/)[![GitHub tag](https://img.shields.io/badge/version-latest-blue)](https://github.com/lotusnoir/ansible-apps_wikijs/tags)
+[![Build Status](https://travis-ci.com/lotusnoir/ansible-apps_wikijs.svg?branch=master?style=flat)](https://travis-ci.com/lotusnoir/ansible-apps_wikijs)
+[![License](https://img.shields.io/badge/license-Apache--2.0-brightgreen?style=flat)](https://opensource.org/licenses/Apache-2.0)
+[![Ansible Role](https://img.shields.io/badge/galaxy-apps_wikijs-purple?style=flat)](https://galaxy.ansible.com/lotusnoir/apps_wikijs)
+![GitHub repo size](https://img.shields.io/github/repo-size/lotusnoir/ansible-apps_wikijs?color=orange&style=flat)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/52300)
+[![downloads](https://img.shields.io/ansible/role/d/52300)](https://galaxy.ansible.com/lotusnoir/apps_wikijs)
+[![Version](https://img.shields.io/github/release/lotusnoir/ansible-apps_wikijs.svg)](https://github.com/lotusnoir/ansible-apps_wikijs/releases/)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lotusnoir_ansible-apps_wikijs&metric=alert_status)](https://sonarcloud.io/dashboard?id=lotusnoir_ansible-apps_wikijs)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=lotusnoir_ansible-apps_wikijs&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=lotusnoir_ansible-apps_wikijs)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=lotusnoir_ansible-apps_wikijs&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=lotusnoir_ansible-apps_wikijs)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lotusnoir_ansible-apps_wikijs&metric=security_rating)](https://sonarcloud.io/dashboard?id=lotusnoir_ansible-apps_wikijs)
 
 Deploy [Wiki.js](https://wiki.js.org/) wiki system using ansible.
 
