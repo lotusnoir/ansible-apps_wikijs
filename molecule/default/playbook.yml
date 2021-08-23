@@ -7,3 +7,6 @@
     - role: geerlingguy.git
     - role: geerlingguy.nodejs
     - role: apps_wikijs
+
+  vars:
+    nodejs_install_npm_user: root
