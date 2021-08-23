@@ -1,0 +1,9 @@
+---
+- name: Run role
+  hosts: all
+  become: true
+
+  roles:
+    - role: geerlingguy.git
+    - role: geerlingguy.nodejs
+    - role: apps_wikijs

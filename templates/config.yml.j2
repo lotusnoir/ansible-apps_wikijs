@@ -91,14 +91,14 @@ pool:
 # ---------------------------------------------------------------------
 # Leave 0.0.0.0 for all interfaces
 
-bindIP: {{ wikijs_config_bindIP }}
+bindIP: {{ wikijs_config_bindip }}
 
 # ---------------------------------------------------------------------
 # Log Level
 # ---------------------------------------------------------------------
 # Possible values: error, warn, info (default), verbose, debug, silly
 
-logLevel: {{ wikijs_config_logLevel }}
+logLevel: {{ wikijs_config_loglevel }}
 
 # ---------------------------------------------------------------------
 # Offline Mode
@@ -121,4 +121,4 @@ ha: {{ wikijs_config_ha }}
 # Data Path
 # ---------------------------------------------------------------------
 # Writeable data path used for cache and temporary user uploads.
-dataPath: {{ wikijs_config_dataPath }}
+dataPath: {{ wikijs_config_datapath }}

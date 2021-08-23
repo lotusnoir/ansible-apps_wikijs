@@ -55,8 +55,8 @@
         repo: "https://github.com/Requarks/wiki-localization.git"
         dest: "{{ wikijs_install_dir }}/data/sideload"
         depth: 1    # Shallow clone
-        recursive: yes
-        force: yes
+        recursive: true
+        force: true
       notify: Restart wikijs
 
     - name: "Change ownership of sideload"

@@ -1,15 +1,15 @@
 ---
 #Install
-wikijs_version: "2.5.126"
+wikijs_version: "2.5.201"
 wikijs_install_dir: /opt/wikijs
 
 #Config
-wikijs_config_bindIP: "0.0.0.0"
+wikijs_config_bindip: "0.0.0.0"
 wikijs_config_port: 3000
-wikijs_config_logLevel: info
+wikijs_config_loglevel: info
 wikijs_config_offline: true
 wikijs_config_ha: false
-wikijs_config_dataPath: ./data
+wikijs_config_datapath: ./data
 
 #Database
 wikijs_config_db_type: postgres
