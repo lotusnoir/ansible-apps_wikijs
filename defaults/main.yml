@@ -33,4 +33,4 @@ wikijs_config_ssl_pfx: path/to/cert.pfx
 wikijs_config_ssl_passphrase: null
 wikijs_config_ssl_dhparam: null
 wikijs_config_ssl_domain: wiki.yourdomain.com
-wikijs_config_ssl_subscriberEmail: admin@example.com
+wikijs_config_ssl_subscriberemail: admin@example.com

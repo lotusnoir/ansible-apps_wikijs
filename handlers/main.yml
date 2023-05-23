@@ -1,12 +1,12 @@
 ---
 - name: Start wikijs
-  service:
+  ansible.builtin.service:
     name: wikijs
     state: started
     enabled: true
     daemon_reload: true
 
 - name: "Restart wikijs"
-  service:
+  ansible.builtin.service:
     name: wikijs
     state: restarted

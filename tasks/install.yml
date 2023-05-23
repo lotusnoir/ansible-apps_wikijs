@@ -1,18 +1,18 @@
 ---
 - name: "Check if wikijs is already installed"
-  stat:
+  ansible.builtin.stat:
     path: "{{ wikijs_install_dir }}"
   register: wikijs_installed
 
 - name: "Install requierements"
-  package:
+  ansible.builtin.package:
     name: "jq"
-    state: pres
+    state: present
   when:
     - wikijs_installed.stat.exists
 
 - name: "Check installed version of wikijs"
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     cat {{ wikijs_install_dir }}/package.json | jq -r '.version'
   args:
@@ -22,16 +22,17 @@
   when:
     - wikijs_installed.stat.exists
 
-- when: not wikijs_installed.stat.exists or wikijs_version != wikijs_version_installed.stdout_lines[0]
+- name: "Install tasks"
+  when: not wikijs_installed.stat.exists or wikijs_version != wikijs_version_installed.stdout_lines[0]
   block:
     - name: "Create wikijs system group"
-      group:
+      ansible.builtin.group:
         name: wikijs
         system: true
         state: present
 
     - name: "Create wikijs system user"
-      user:
+      ansible.builtin.user:
         name: wikijs
         system: true
         shell: "/usr/sbin/nologin"
@@ -40,7 +41,7 @@
         home: "{{ wikijs_install_dir }}"
 
     - name: "Create install directory {{ wikijs_install_dir }}"
-      file:
+      ansible.builtin.file:
         path: "{{ wikijs_install_dir }}"
         state: directory
         mode: 0755
@@ -48,7 +49,7 @@
         group: wikijs
 
     - name: "Download and extract wikijs"
-      unarchive:
+      ansible.builtin.unarchive:
         src: "{{ wikijs_download_url }}"
         dest: "{{ wikijs_install_dir }}/"
         remote_src: true
@@ -58,7 +59,7 @@
       notify: Restart wikijs
 
     - name: "Install sideload locales from git"
-      git:
+      ansible.builtin.git:
         repo: "https://github.com/Requarks/wiki-localization.git"
         dest: "{{ wikijs_install_dir }}/data/sideload"
         depth: 1    # Shallow clone
@@ -67,13 +68,13 @@
       notify: Restart wikijs
 
     - name: "Change ownership of sideload"
-      file:
+      ansible.builtin.file:
         path: "{{ wikijs_install_dir }}/data/sideload"
         owner: wikijs
         group: wikijs
 
 - name: "Deploy config.yml"
-  template:
+  ansible.builtin.template:
     src: config.yml.j2
     dest: "{{ wikijs_install_dir }}/config.yml"
     owner: wikijs
@@ -82,7 +83,7 @@
   notify: Restart wikijs
 
 - name: "Copy service file"
-  template:
+  ansible.builtin.template:
     src: wikijs.service.j2
     dest: "/etc/systemd/system/wikijs.service"
     owner: root
