@@ -24,7 +24,9 @@
 Deploy [Wiki.js](https://wiki.js.org/) wiki system using ansible.
 ## Requirements
 
-none
+- geerlingguy.git
+- geerlingguy.nodejs
+
 
 ## Role variables
 
