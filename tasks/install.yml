@@ -8,6 +8,10 @@
   ansible.builtin.package:
     name: "jq"
     state: present
+  register: pkg_result
+  retries: 12
+  delay: 10
+  until: pkg_result is success
   when:
     - wikijs_installed.stat.exists
 
@@ -44,7 +48,7 @@
       ansible.builtin.file:
         path: "{{ wikijs_install_dir }}"
         state: directory
-        mode: 0755
+        mode: '0755'
         owner: wikijs
         group: wikijs
 
@@ -53,7 +57,7 @@
         src: "{{ wikijs_download_url }}"
         dest: "{{ wikijs_install_dir }}/"
         remote_src: true
-        mode: 0644
+        mode: '0644'
         owner: wikijs
         group: wikijs
       notify: Restart wikijs
@@ -79,7 +83,7 @@
     dest: "{{ wikijs_install_dir }}/config.yml"
     owner: wikijs
     group: wikijs
-    mode: 0640
+    mode: '0640'
   notify: Restart wikijs
 
 - name: "Copy service file"
@@ -88,6 +92,6 @@
     dest: "/etc/systemd/system/wikijs.service"
     owner: root
     group: root
-    mode: 0640
+    mode: '0640'
   notify:
     - Start wikijs
